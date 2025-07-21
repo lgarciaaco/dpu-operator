@@ -37,11 +37,6 @@ COPY openshift/install-dpu.sh .
 RUN chmod +x install-dpu.sh \
     && ./install-dpu.sh
 
-# Remove packages which are only needed for cachito
-RUN dnf remove -y gcc gcc-c++ \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
-
 #TODO: Update to newer package, according to release.
 
 COPY ./cmd/intelvsp/p4runtime-2023.11.0/p4 /opt/p4rt_proto
